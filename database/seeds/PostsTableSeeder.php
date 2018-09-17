@@ -14,20 +14,21 @@ class PostsTableSeeder extends Seeder
         DB::table('posts')->truncate();
         $faker=Factory::create();
         $posts=[];
-        for($i=1;$i<=10;$i++)
+        for($i=1; $i<=10; $i++)
         {
             $image="Post_Image_".rand(1,5) . ".jpg";
-            $date=date("Y-m-d H:i:s",strtotime("2019-07-18 08:00:00 + {$i}days"));
+            //$date=date("Y-m-d H:i:s",strtotime("2019-07-18 08:00:00 + {$i}days"));
             $posts[]=[
                 'author_id'=>rand(1,3),
-                'title'=>$faker->sentences(rand(8,12)),
+                'title'=>$faker->sentence(rand(8,12)),
                 'excerpt'=>$faker->text(rand(250,350)),
                 'body'=>$faker->paragraphs(rand(10,15), true),
                 'slug'=>$faker->slug(),
                 'image' =>rand(0,1) == 1 ? $image : null,
-                'created_at'=>$date,
-                'updated_at'=>$date
+                'created_at'=>new DateTime,
+                'updated_at'=>new DateTime
             ];
         }
+          DB::table('posts')->insert($posts);
     }
 }
