@@ -33,7 +33,7 @@ class Post extends Model
         return $query->where("published_at","<=",Carbon::now());
     }
 
-    public function scopePublishsed()
+    public function scopePublished()
     {
         return $query->where("published_at","<=",Carbon::now());
     }
