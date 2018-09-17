@@ -6,6 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
+
+   public function author()
+   {
+     return $this->belongsTo(User::class);
+   }
+
     public function getImageUrlAttribute($value)
     {
         $imageUrl="";
@@ -15,5 +21,9 @@ class Post extends Model
             if(file_exists($imagePath)) $imageUrl=asset("img/".$this->image);
         }
         return $imageUrl;
+    }
+    public function getdateAttribute($value)
+    {
+        return $this->created_at->diffForHumans();
     }
 }

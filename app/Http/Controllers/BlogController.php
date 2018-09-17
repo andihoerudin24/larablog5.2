@@ -9,7 +9,8 @@ class BlogController extends Controller
 {
     public function index()
     {
-      $posts=Post::all();
-      return view('blog.index',compact('posts'));
+
+      $posts=Post::with('author')->orderBy('created_at','desc')->paginate(3);
+      return view('blog.index',compact('posts'))->render();
     }
 }
