@@ -5,9 +5,8 @@
 
         <div class="col-md-8">
             <article class="post-item post-detail">
-                @if ($post->iamge)
-
-                <div class="post-item-image">
+                @if ($post->image)
+           <div class="post-item-image">
                         <a href="#">
                             <img src="{{ asset('img/'.$post->image) }}" alt="{{$post->title}}">
                         </a>

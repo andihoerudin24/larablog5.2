@@ -22,13 +22,14 @@ class BlogController extends Controller
                  ->orderBy('created_at','desc')
                  ->where('category_id',$id)
                  ->simplePaginate(3);
-      return view('blog.index',compact('posts','categories'));
+    return view('blog.index',compact('posts','categories'));
     }
 
-    public function show(Post $post)
+    public function show($id)
     {
-        //$post=Post::findOrFail($id);
-        //$post=DB::table('posts')->where('id',$id)->first();
-        return view('blog.show',compact('post'));
+         $categories=Category::orderBy('title','asc')->get();
+         $post=Post::findOrFail($id);
+         //$post=DB::table('posts')->where('id',$id)->first();
+         return view('blog.show',compact('post','categories'));
     }
 }

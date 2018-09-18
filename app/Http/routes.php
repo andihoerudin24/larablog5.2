@@ -16,11 +16,10 @@ Route::get('/',[
     'as'  =>'blog'
 ]);
 
-Route::get('/blog/{post}',[
+Route::get('/blog/{id}',[
     'uses'=>'BlogController@show',
     'as'  =>'blog.show',
 ]);
-
 
 Route::get('/category/{category}',[
     'uses'=>'BlogController@category',
