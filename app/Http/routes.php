@@ -28,4 +28,3 @@ Route::get('/category/{category}',[
 
 Route::auth();
 Route::get('/home', 'HomeController@index');
-Route::get('/home', 'HomeController@index');
