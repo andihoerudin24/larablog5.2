@@ -35,5 +35,7 @@ class CreatePostsTable extends Migration
     public function down()
     {
         Schema::drop('posts');
+        //Schema::enableForeignKeyConstraints();
+      //  $table->dropForeign(['category_id']);
     }
 }

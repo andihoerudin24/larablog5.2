@@ -38,7 +38,7 @@ class Post extends Model
         return $query->where("published_at","<=",Carbon::now());
     }
 
-    public function categori()
+    public function categoris()
     {
         return $this->belongsTo(Category::class);
         //return $this->belongsTo(User::class);

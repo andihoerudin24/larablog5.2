@@ -25,3 +25,6 @@ Route::get('/category/{category}',[
     'uses'=>'BlogController@category',
      'as' =>'category'
 ]);
+
+Route::auth();
+Route::get('/home', 'HomeController@index');
