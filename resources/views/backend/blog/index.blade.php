@@ -57,17 +57,12 @@
        <div class="box-footer clearfix">
 
         <div class="pull-left">
-          <ul class="pagination no-margin">
-                <li><a href="#">&laquo;</a></li>
-                <li><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">&raquo;</a></li>
-            </ul>
+          {{$posts->links()}}
         </div>
 
         <div class="pull-right">
-            <small>4 items</small>
+        <?php $postcount=$posts->count();  ?>
+            <small>{{ $postcount }}</small>
         </div>
 
     </div>
