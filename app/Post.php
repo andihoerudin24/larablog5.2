@@ -7,8 +7,10 @@ use Carbon\Carbon;
 use Notifiable;
 class Post extends Model
 {
-    protected $fillable = ['title','slug','excerpt','body','published_at','category_id'];
-    protected $dates=['published_at'];
+    protected $primaryKey = 'id';
+    protected $table = 'posts';
+    protected $fillable=array('author_id','category_id','title','slug','excerpt','published_at','body','image');
+    //protected $guarded = array();
 
    public function author()
    {
