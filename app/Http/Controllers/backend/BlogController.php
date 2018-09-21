@@ -52,8 +52,18 @@ class BlogController extends BackendController
             'category_id'  => 'required',
             'excerpt'      => 'required',
         ]);
-        $request['author_id']=$request->user()->id;
-        DB::table('posts')->insert(request()->except(['_token']));
+          $post= new Post;
+          $post->author_id=$request->user()->id;
+          $post->title=$request['title'];
+          $post->slug=$request['slug'];
+          $post->body=$request['body'];
+          $post->category_id=$request['category_id'];
+          $post->excerpt=$request['excerpt'];
+          $file=$request->file('image');
+          $fileName=$file->getClientOriginalName();
+          $request->file('image')->move('img/',$fileName);
+          $post->image=$fileName;
+          $post->save();
         return redirect('/backend/blog')->with('message','Your post was create success');
     }
 
