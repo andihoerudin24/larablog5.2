@@ -13,13 +13,15 @@ class BlogController extends BackendController
      *
      * @return \Illuminate\Http\Response
      */
+    protected $limit=5;
     public function index()
     {
        $posts=DB::table('posts')
                 ->join('users','users.id','=','posts.author_id')
                 ->join('categories','categories.id','=','posts.category_id')
                 ->select('posts.*','users.name','categories.title')
-                ->get();
+                ->orderBy('id', 'desc')
+                ->paginate($this->limit);
         return view("backend.blog.index",compact('posts'));
     }
 
