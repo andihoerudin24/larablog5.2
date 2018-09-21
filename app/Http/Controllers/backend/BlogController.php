@@ -33,7 +33,8 @@ class BlogController extends BackendController
      */
     public function create()
     {
-        dd("testing");
+        $post= new Post;
+        return view('backend.blog.create',compact('post'));
     }
 
     /**
