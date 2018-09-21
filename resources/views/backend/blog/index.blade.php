@@ -13,6 +13,8 @@
       </h1>
       <ol class="breadcrumb">
         <li><i class="fa fa-dashboard"></i> Dashboard</li>
+        <li class="active">Blog</li
+
       </ol>
     </section>
 
@@ -21,8 +23,18 @@
         <div class="row">
           <div class="col-xs-12">
             <div class="box">
+              <div class="box-header">
+                   <div class="pull-rigth">
+                     <a href="{{route('backend.blog.create')}}" class="btn btn-success">Tambah</a>
+                   </div>
+              </div>
               <!-- /.box-header -->
               <div class="box-body ">
+                @if (!$posts->count())
+                 <div class="alert alert-danger">
+                    <strong>DATA KOSONG</strong>
+                  </div>
+                  @else
                  <table class="table table-bordered">
                      <thead>
                          <tr>
@@ -50,6 +62,7 @@
                                 <td>{{ $post->created_at }}</td>
                             </tr>
                          @endforeach
+                @endif
                      </tbody>
                  </table>
               </div>
@@ -61,7 +74,6 @@
         </div>
 
         <div class="pull-right">
-        <?php $postcount=$posts->count();  ?>
             <small>{{ $postcount }}</small>
         </div>
 
