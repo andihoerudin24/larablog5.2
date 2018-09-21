@@ -4,8 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
+use Notifiable;
 class Post extends Model
 {
+    protected $fillable = ['title','slug','excerpt','body','published_at','category_id'];
     protected $dates=['published_at'];
 
    public function author()
