@@ -22,7 +22,8 @@ class BlogController extends BackendController
                 ->select('posts.*','users.name','categories.title')
                 ->orderBy('id', 'desc')
                 ->paginate($this->limit);
-        return view("backend.blog.index",compact('posts'));
+       $postcount=Post::count();
+        return view("backend.blog.index",compact('posts','postcount'));
     }
 
     /**
