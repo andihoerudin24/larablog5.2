@@ -29,7 +29,12 @@
                    </div>
               </div>
               <!-- /.box-header -->
-              <div class="box-body ">
+              <div class="box-body">
+                @if (session('message'))
+                  <div class="alert alert-info">
+                  {{ session('message') }}
+                  </div>
+                 @endif
                 @if (!$posts->count())
                  <div class="alert alert-danger">
                     <strong>DATA KOSONG</strong>
@@ -59,7 +64,7 @@
                                 <td>{{ $post->slug }}</td>
                                 <td>{{ $post->name }}</td>
                                 <td>{{ $post->title }}</td>
-                                <td>{{ $post->created_at }}</td>
+                                <td>{{ $post->published_at }}</td>
                             </tr>
                          @endforeach
                 @endif

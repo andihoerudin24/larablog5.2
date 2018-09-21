@@ -45,7 +45,16 @@ class BlogController extends BackendController
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'title'        => 'required',
+            'slug'         => 'required|unique:posts',
+            'body'         => 'required',
+            'category_id'  => 'required',
+            'excerpt'      => 'required',
+        ]);
+        $request['author_id']=$request->user()->id;
+        DB::table('posts')->insert(request()->except(['_token']));
+        return redirect('/backend/blog')->with('message','Your post was create success');
     }
 
     /**
